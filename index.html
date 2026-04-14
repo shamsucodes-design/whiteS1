@@ -4,102 +4,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Calculator</title>
-    <style>
-        body {
-            font-family: system-ui, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            height: 100vh;
-            margin: 0;
-            display: grid;
-            place-items: center;
-        }
-
-        .calculator {
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 16px;
-            padding: 28px 26px;
-            max-width: 360px;
-            width: 100%;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
-            text-align: center;
-        }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 16px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px 12px;
-            margin: 8px 0;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px 16px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #ff5f6d, #ffc371);
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: filter 0.2s ease;
-        }
-
-        button:hover {
-            filter: brightness(1.05);
-        }
-
-        #result {
-            margin-top: 16px;
-            font-weight: 600;
-        }
-    </style>
+    <title>Meera Kollections - Sewing E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class=" Shamsu's calculator">
-        <h2> Shamsu's Love Calculator</h2>
-        <input type="text" id="name1" placeholder="Your Name">
-        <input type="text" id="name2" placeholder="Their Name">
-        <button id="calcBtn">Calculate Love</button>
-        <div id="result">Result will appear here</div>
-    </div>
+    <header>
+        <div class="container">
+            
+            <h1>Meera Kollections</h1>
+            <nav>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <script>
-        const name1Input = document.getElementById("name1");
-        const name2Input = document.getElementById("name2");
-        const calcBtn = document.getElementById("calcBtn");
-        const resultDiv = document.getElementById("result");
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Welcome to Meera Kollections</h2>
+                <p>Your one-stop shop for all your quality, hijabs,veils abaya, kaftans,bags,shoes,etc at affordable
+                    prices,from meera kollections.</p>
+            </div>
+        </section>
 
-        function getLoveScore(nameA, nameB) {
-            // Deterministic score based on input so it doesn't change on every click
-            const seed = (nameA + "|" + nameB).toLowerCase().split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-            const pseudoRandom = Math.abs(Math.sin(seed)) * 100;
-            return Math.floor(pseudoRandom) + 1;
-        }
+        <section id="products" class="products">
+            <div class="container">
+                <h2>Featured Products</h2>
+                <div class="search-filter">
+                    <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+                    <select id="category-filter" class="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="fabric">Fabrics</option>
+                        <option value="tool">Tools</option>
+                        <option value="kit">Kits</option>
+                        <option value="pattern">Patterns</option>
+                        <option value="thread">Threads</option>
+                    </select>
+                </div>
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </section>
 
-        function renderResult(score, nameA, nameB) {
-            if (!nameA || !nameB) {
-                resultDiv.textContent = "Please enter both names to see your love score.";
-                return;
-            }
+        <section id="cart" class="cart hidden">
+            <div class="container">
+                <h2>Your Cart</h2>
+                <div id="cart-items">
+                    <!-- Cart items swill be loaded here -->
+                </div>
+                <div id="cart-total" class="cart-total">
+                    <div class="total-row">
+                        <span>Total:</span>
+                        <span id="total-price">$0.00</span>
+                    </div>
+                </div>
+                <button id="checkout-btn">Checkout</button>
+                <button id="close-cart-btn">Close Cart</button>
+            </div>
+        </section>
 
-            resultDiv.textContent = `${nameA} ❤️ ${nameB} has a love score of ${score}%`;
-        }
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Meera Kollections</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Meera Kollections is your premier destination for high-quality fashion and sewing supplies.
+                            We specialize in providing exquisite hijabs, veils, abayas, kaftans, bags, shoes, and much
+                            more at affordable prices.</p>
+                        <p>Our commitment to quality and customer satisfaction has made us a trusted name in the fashion
+                            industry. We carefully curate our collection to ensure that every piece meets the highest
+                            standards of craftsmanship and style.</p>
+                        <p>Whether you're looking for traditional pieces or modern designs, Meera Kollections offers
+                            something for everyone. Shop with confidence and discover the perfect items for your
+                            wardrobe.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/meeera.jpg" alt="Meera Kollections CEO Meera">
+                    </div>
+                </div>
+                <div class="ceo-card">
+                    <div class="ceo-photo">
+                        <img src="./images/meeera.jpg" alt="CEO Meera">
+                    </div>
+                    <div class="ceo-info">
+                        <h3>Meet Our CEO</h3>
+                        <p>Meera leads Meera Kollections with passion, creativity, and a commitment to quality. Her
+                            vision brings together beautiful designs, premium materials, and exceptional customer care.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        calcBtn.addEventListener("click", () => {
-            const nameA = name1Input.value.trim();
-            const nameB = name2Input.value.trim();
-            const score = getLoveScore(nameA, nameB);
-            renderResult(score, nameA, nameB);
-        });
-    </script>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <div class="contact-item">
+                            <h4>Address</h4>
+                            <p>123 East Legon<br>Under bridge, SC 12345</p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Phone</h4>
+                            <p>+233 248289536 </p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Email</h4>
+                            <p>info@meerakollections.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Meera Kollections. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
